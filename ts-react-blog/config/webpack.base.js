@@ -17,6 +17,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css?$/,
+        use: ["style-loader", "css-loader", "postcss-loader"],
+        exclude: "/node_modules",
+      },
+      {
         test: /\.(tsx|ts)?$/,
         use: "ts-loader",
         exclude: "/node_modules",
@@ -26,11 +31,12 @@ module.exports = {
   resolve: {
     extensions: [".js", "ts", "tsx", "jsx"],
     alias: {
-      "@": path.resolve(__dirname, "src/"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   devServer: {
     contentBase: "./dist",
+    compress: true, //enable gzip compression
   },
   plugins: [
     new CleanWebpackPlugin({
