@@ -1,12 +1,15 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Login from "../pages/login/index";
+import Home from "../pages/Home/index";
 
-const routes = (
-  <BrowserRouter basename="/">
-    <Route path="login" component={Login} exact></Route>
-  </BrowserRouter>
+const MyRouters = (): JSX.Element => (
+  <Router basename="/">
+    <Route exact path="/" component={Home} />
+    <Route path="/login" component={Login} ></Route>
+  </Router>
 );
+export = MyRouters;
 
-export default routes;
+
