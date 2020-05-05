@@ -2,7 +2,6 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <div>This is main home page</div>
-    <div id="vue"></div>
   </div>
 </template>
 
@@ -11,6 +10,6 @@
 
 export default {
   name: "Home",
-  components: {}
+  components: {},
 };
 </script>

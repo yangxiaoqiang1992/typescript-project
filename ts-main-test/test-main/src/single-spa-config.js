@@ -43,15 +43,10 @@ singleSpa.start();
 // import { registerMicroApps, start } from "qiankun";
 // registerMicroApps([
 //   {
-//     name: "vue-child",
-//     entry: {
-//       scripts: [
-//         "//localhost:8082/js/app.js",
-//         "//localhost:8082/js/chunk-vendors.js",
-//       ],
-//     },
-//     container: "#vue",
-//     activeRule: "/vue",
+//     name: "umiApp",
+//     entry: "http://localhost:8000",
+//     container: "#umi",
+//     activeRule: "/umi",
 //   },
 // ]);
 // start();
