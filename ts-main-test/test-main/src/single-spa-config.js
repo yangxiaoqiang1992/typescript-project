@@ -40,13 +40,14 @@ singleSpa.registerApplication(
 );
 singleSpa.start();
 
-// import { registerMicroApps, start } from "qiankun";
-// registerMicroApps([
-//   {
-//     name: "umiApp",
-//     entry: "http://localhost:8000",
-//     container: "#umi",
-//     activeRule: "/umi",
-//   },
-// ]);
-// start();
+import { registerMicroApps, start } from "qiankun";
+registerMicroApps([
+  {
+    name: "umiApp",
+    //entry: { scripts: ["http://localhost:8888/umi.js"] },
+    entry: "http://localhost:8000",
+    container: "#umi",
+    activeRule: "/umi",
+  },
+]);
+start();

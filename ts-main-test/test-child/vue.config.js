@@ -25,6 +25,7 @@ module.exports = {
     // 开发环境跨域问题
     devServer: {
       headers: { "Access-Control-Allow-Origin": "*" },
+      port: 8081,
     },
   },
 };
