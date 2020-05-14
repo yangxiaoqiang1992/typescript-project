@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const tsImportPluginFactory = require("ts-import-plugin");
 const { say } = require("cfonts");
 say("typescript", { font: "simple" });
 module.exports = {
@@ -17,14 +18,30 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css?$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-        exclude: "/node_modules",
+        test: /\.(tsx|ts)?$/,
+        loader: "ts-loader",
+        exclude: "/node_modules/",
+        options: {
+          //使用ts-import-plugin 来处理antd的按需加载
+          transpileOnly: true,
+          getCustomTransformers: () => ({
+            before: [
+              tsImportPluginFactory({
+                libraryName: "antd",
+                libraryDirectory: "lib",
+                style: "css",
+              }),
+            ],
+          }),
+          compilerOptions: {
+            module: "es2015",
+          },
+        },
       },
       {
-        test: /\.(tsx|ts)?$/,
-        use: "ts-loader",
-        exclude: "/node_modules",
+        test: /\.css?$/,
+        use: ["style-loader", "css-loader"],
+        exclude: "/node_modules/",
       },
     ],
   },
@@ -36,6 +53,7 @@ module.exports = {
   },
   devServer: {
     contentBase: "./dist",
+    historyApiFallback: true,
     // compress: true, //enable gzip compression
   },
   plugins: [
@@ -48,8 +66,8 @@ module.exports = {
       cache: false, // 不缓存
       inject: true,
     }),
-    new UglifyJsPlugin({
-      sourceMap: true,
-    }),
+    // new UglifyJsPlugin({
+    //   sourceMap: true,
+    // }),
   ],
 };
