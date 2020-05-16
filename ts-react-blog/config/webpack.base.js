@@ -39,9 +39,16 @@ module.exports = {
         },
       },
       {
-        test: /\.css?$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.(css|less)?$/,
+        use: ["style-loader", "css-loader", "less-loader"],
         exclude: "/node_modules/",
+      },
+      {
+        test: /\.(png|jpg|jpeg)?$/,
+        loader: "url-loader",
+        options: {
+          limit: 8192,
+        },
       },
     ],
   },

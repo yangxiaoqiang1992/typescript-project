@@ -10,7 +10,6 @@ import { Button } from "antd";
 ReactDOM.render(
   <Provider store={store}>
     <Routes />
-    <Button type="primary">按钮</Button>
   </Provider>,
   document.getElementById("root")
 );
