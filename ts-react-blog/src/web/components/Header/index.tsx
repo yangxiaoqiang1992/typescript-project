@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import SearchInput from "../SearchInput/index";
 import "./index.less";
 import defaultLogo from "../../assets/images/logo.png";
@@ -15,8 +15,10 @@ export interface Iprops {
   navLinks: Array<navType>;
   [propsKey: string]: any;
 }
+
 function Header(props: Iprops) {
   const [isLogined, setLoginStatus]: [boolean, any] = useState(false);
+  const history = useHistory();
   const userMenu = (
     <Menu>
       <Menu.Item>
@@ -27,6 +29,9 @@ function Header(props: Iprops) {
       </Menu.Item>
     </Menu>
   );
+  const toLoginPage = () => {
+    history.push("/login");
+  };
   return (
     <div className="blog-header ">
       <div className="blog-main-width">
@@ -56,7 +61,7 @@ function Header(props: Iprops) {
           </div>
         ) : (
           <div className="blog-unlogined">
-            <Button>立即登录</Button>
+            <Button onClick={toLoginPage}>立即登录</Button>
             <Button type="primary">免费注册</Button>
           </div>
         )}
