@@ -1,0 +1,30 @@
+.blog-tab {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+.blog-tab-item {
+  padding: 10px 15px;
+}
+.blog-article-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  h4 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #212121;
+    position: relative;
+    margin: 5px 0;
+  }
+  .blog-article-content {
+    margin-bottom: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.5;
+    color: #888;
+    font-size: 13px;
+  }
+}
