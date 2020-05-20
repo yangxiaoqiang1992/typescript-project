@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ArticleItem, { ArticleItemProps } from "./ArticleItem";
 import "./index.less";
 
@@ -8,18 +8,16 @@ export interface ArticleListProps {
   children?: any;
 }
 
-const tabClickEvent = (e: any) => {
-  console.log(e);
-};
 const ArticleList = (props: ArticleListProps) => {
+  const [activeIndex, setActiveIndex] = useState(0);
   const header = Array.isArray(props.title) ? (
     <div className="blog-tab">
       {props.title?.map((item: string, index: number) => {
         return (
           <div
-            className="blog-tab-item"
+            className={`blog-tab-item ${activeIndex == index ? "active" : ""}`}
             key={"tab" + index}
-            onClick={tabClickEvent}
+            onClick={() => setActiveIndex(index)}
           >
             {item}
           </div>
@@ -32,13 +30,14 @@ const ArticleList = (props: ArticleListProps) => {
   return (
     <>
       {header}
-      {(props.data &&
+      {props.data &&
         props.data.map((item: ArticleItemProps) => {
           return <ArticleItem {...item} key={item.id} />;
-        })) ||
-        props.children}
+        })}
     </>
   );
 };
 export { ArticleList as default };
 ArticleList.Item = ArticleItem;
+
+//withRouter()  memo() useEffect useState

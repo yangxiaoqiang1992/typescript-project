@@ -5,8 +5,6 @@ import "./web/assets/css/common.css";
 import Routes from "./web/router/router";
 import store from "./web/store/index";
 
-import { Button } from "antd";
-
 ReactDOM.render(
   <Provider store={store}>
     <Routes />
