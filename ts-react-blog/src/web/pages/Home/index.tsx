@@ -115,6 +115,10 @@ const tagsData: tagType[] = [
     text: "javascript",
     color: "geekblue",
   },
+  {
+    text: "php",
+    color: "blue",
+  },
 ];
 export default class Home extends React.Component<Ipros, Itate> {
   render() {
