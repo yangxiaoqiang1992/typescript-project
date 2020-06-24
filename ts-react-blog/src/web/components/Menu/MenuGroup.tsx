@@ -1,10 +1,14 @@
 import React, { memo } from "react";
-import Menu from "./index";
-export interface MenuGropProps {}
+import Menu, { MenuProps } from "./index";
+export interface MenuGropProps extends MenuProps {
+  title: string;
+}
 export default (props: MenuGropProps) => {
+  const { title, ...others } = props;
   return (
     <div className="blog-menu-group">
-      <Menu></Menu>
+      <h3>{props.title}</h3>
+      <Menu {...others}></Menu>
     </div>
   );
 };

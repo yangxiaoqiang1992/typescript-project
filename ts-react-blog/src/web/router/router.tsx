@@ -5,6 +5,7 @@ import Header from "../components/Header/index";
 import { navLinks } from "../config/index";
 
 const Home = lazy(() => import("../pages/Home/index"));
+const Questions = lazy(() => import("../pages/Questions/index"));
 const Login = lazy(() => import("../pages/Login/index"));
 
 export default (): JSX.Element => (
@@ -13,6 +14,7 @@ export default (): JSX.Element => (
     <Suspense fallback={<Loading size="large" />}>
       <Route path="/" component={Home} exact />
       <Route path="/home" component={Home} />
+      <Route path="/questions" component={Questions} />
       <Route path="/login" component={Login} />
     </Suspense>
   </Router>

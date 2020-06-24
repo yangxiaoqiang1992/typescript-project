@@ -2,6 +2,8 @@ import React from "react";
 import "./index.less";
 import List, { ArticleListProps } from "../../components/Article/index";
 import RankList, { rankListDataType } from "../../components/RankList/index";
+import Menu, { MenuItemProps } from "../../components/Menu/index";
+import MenuGroup, { MenuGropProps } from "../../components/Menu/MenuGroup";
 import Tags, { tagType } from "../../components/Tags/index";
 interface Ipros {}
 interface Itate {}
@@ -106,6 +108,17 @@ const rankData: rankListDataType[] = [
     name: "yangxiaoqiang",
   },
 ];
+const MenuData: Array<MenuItemProps> = [
+  {
+    name: "我要推荐",
+  },
+  {
+    name: "近期热门",
+  },
+  {
+    name: "最新内容",
+  },
+];
 const tagsData: tagType[] = [
   {
     text: "java",
@@ -126,7 +139,15 @@ export default class Home extends React.Component<Ipros, Itate> {
       <div className="blog-home">
         <div className="blog-banner"></div>
         <div className="blog-main-width blog-home-main">
-          <aside className="blog-menu-aside"></aside>
+          <aside className="blog-menu-aside">
+            <Menu data={MenuData}>
+              {/* {MenuData.map((item) => {
+                return <Menu.Item name={item.name}></Menu.Item>;
+              })} */}
+            </Menu>
+            <MenuGroup title="技术社区" data={MenuData}></MenuGroup>
+            <MenuGroup title="技术频道" data={MenuData}></MenuGroup>
+          </aside>
           <main>
             <List
               title={["为你推荐", "近期热门", "最新内容"]}

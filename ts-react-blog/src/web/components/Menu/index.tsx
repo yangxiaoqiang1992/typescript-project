@@ -1,5 +1,6 @@
 import React, { memo } from "react";
-import MenuItem, { MenuItemProps } from "./MenuItem";
+import MenuItem, { MenuItemProps as ItemProps } from "./MenuItem";
+import "./index.less";
 
 export interface MenuProps {
   data?: Array<MenuItemProps>;
@@ -18,4 +19,5 @@ const Menu = (props: MenuProps) => {
 };
 
 Menu.Item = MenuItem;
+export type MenuItemProps = ItemProps;
 export { Menu as default };
